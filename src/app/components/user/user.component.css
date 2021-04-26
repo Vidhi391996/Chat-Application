@@ -1,0 +1,23 @@
+.sendButton{
+    border-radius: 15px;
+    padding: 5px 8px 0px 8px;
+    background-color: #008000cf;
+    border: 0px;
+    position: relative;
+    left: 3px;
+}
+
+.messageRow{
+    text-align: right;
+        background: aqua;
+        height: auto;
+        position: relative;
+        top: 10px;
+        bottom: 20px;
+        margin: 10px 10px 10px 10px;
+}
+
+.chatTextBox{
+    position: absolute;width: 83%;
+        top: 460px;margin-left: 5px;
+}

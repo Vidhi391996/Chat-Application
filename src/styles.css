@@ -5,7 +5,26 @@
     flex-direction: row;
   }
 
-  .orangeTheme{
+  .orangeBorder{
     border: 1px solid #ffa5004f;
+  }
+
+  .orangeBackground{
     background-color: #ffa50026;
+  }
+
+  .fontSize22{
+    font-size: 22px!important;
+  }
+
+  .colorWhite{
+    color: #fff;
+  }
+
+  .wordBreak{
+    word-break: break-all;
+  }
+
+  .cursorPointer{
+    cursor: pointer;
   }

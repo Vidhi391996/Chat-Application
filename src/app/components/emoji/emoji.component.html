@@ -1,0 +1,5 @@
+<div fxLayout="row" class="flex-container">
+    <div fxFlex="10" *ngFor="let emoji of emojisList;let count=index" (click)="selectEmoji(count)">
+        {{emoji}}
+    </div>
+</div>

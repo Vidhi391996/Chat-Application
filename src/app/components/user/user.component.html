@@ -1,10 +1,20 @@
-
-
-<div fxLayout="row" class="flex-container">
-    <div fxFlex="20" >
-        <div *ngFor="let user of usersList;let i =index;" class="orangeTheme"> 
+<div fxLayout="row" class="flex-container" style="min-height: 500px;">
+    <div fxFlex="20" class="orangeBackground wordBreak cursorPointer">
+        <div *ngFor="let user of usersList" class="orangeBorder"  (click)="fetchUserChat(user)">  
             {{user}}
         </div>
     </div>
-    <app-chat-screen></app-chat-screen>
+    <div fxFlex="80" style="background-color: #0080000d" class="wordBreak">
+        <div *ngFor="let messageOfUser of messageList" class="messageRow">
+            {{messageOfUser}}
+        </div>
+        <div class="chatTextBox">
+            <input type="text" [(ngModel)]="message" class="form-el-space" style="width: 92%;" (keyup.enter)="sendMessage()"/>
+            <button class="btn btn-primary cursorPointer sendButton" (click)="sendMessage()" >
+                <i class="fa fa-chevron-right fontSize22 colorWhite" aria-hidden="true" ></i>
+              </button>
+        </div>
+    </div>
 </div>
+
+<app-emoji></app-emoji>
