@@ -1,0 +1,10 @@
+
+
+<div fxLayout="row" class="flex-container">
+    <div fxFlex="20" >
+        <div *ngFor="let user of usersList;let i =index;" class="orangeTheme"> 
+            {{user}}
+        </div>
+    </div>
+    <app-chat-screen></app-chat-screen>
+</div>
