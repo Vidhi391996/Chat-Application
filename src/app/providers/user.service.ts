@@ -7,7 +7,9 @@ import { Subject } from "rxjs";
 })
 export class UserService {
 
-  emitter: Subject<any> = new Subject();
+  usersListEmitter: Subject<any> = new Subject<any>();
+
+  chatEmitter: Subject<any> = new Subject<any>();
 
   constructor(private zone: NgZone) { }
 
@@ -42,18 +44,49 @@ export class UserService {
   //   })
   //  let doc= this.fetchUsersNameDocumentDetails();
   //  console.log("docccccc");
+  //  let doc = {
+    //     _id: 'vidhi',
+    //     name: 'gggggg',
+    //     type:documentName
+    // };
+    // db.put(doc).then((res:any) => {
+    //   console.log("Document inserted OK");
+    // }).catch((err:any) => {
+    //   console.error(err);
+    // });
   }
   
+  updateChat(documentName:any,chat:string)
+  {
+    let db=this.establishCouchDBConnection();
+    db.get(documentName).then((doc:any) => {
+      doc.message=chat;
+      db.put(doc).then((res:any) => {
+        console.log("Document inserted OK");
+      }).catch((err:any) => {
+        console.error(err);
+      });
+    });
+  }
+
   checkCouchDbDocExist(documentName:any)
   {
     let db=this.establishCouchDBConnection();
-    db.get(documentName).then(function(doc:any) {
-    }).then(function(response:any) {
+    db.get(documentName).then((doc:any) => {
+      if(doc.type=="users_list")
+      {
+        this.usersListEmitter.next(doc);
+      }
+      else
+      {
+        this.chatEmitter.next(doc);
+      }
+     }).then(function(response:any) {
     }).catch(function (err:any) {
-      let doc = {
+       let doc = {
         _id: documentName,
-        name: [],
-        type:documentName
+        message: "",
+        type:documentName,
     };
     db.put(doc).then((res:any) => {
       console.log("Document inserted OK");
@@ -63,18 +96,4 @@ export class UserService {
     });
   }
 
-  createCouchDbDoc()
-  {
-    let db=this.establishCouchDBConnection();
-
-      let doc = {
-        _id: 'users_list',
-        name: []
-    };
-    db.put(doc).then((res:any) => {
-      console.log("Document inserted OK");
-    }).catch((err:any) => {
-      console.error(err);
-    });
-  }
 }

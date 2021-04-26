@@ -9,24 +9,57 @@ import { Subject } from "rxjs";
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
-  emitter: Subject<any> = new Subject();
+  emojisList:any=require('emojis-list');
   usersList:any=[];
+  message:string="";
+  messageList:any=[];
+  chat:string='';
+  selectedUser:string='';
+  
 
   constructor(private userService:UserService) { 
-   let db=this.userService.establishCouchDBConnection();
-    let docDetail={};
-    db.get('users_list').then( (res:any) =>  {
-      for(let id in res["data"])
+    this.userService.usersListEmitter.subscribe((_element: any)=>{
+      for(let id in _element["data"])
+        {
+          this.usersList.push(_element["data"][id]["name"]);
+        }
+    })
+  }
+
+  fetchUserChat(user:any)
+  {
+    this.userService.checkCouchDbDocExist(user);
+    this.userService.chatEmitter.subscribe((_element: any)=>{
+      this.messageList=[];
+      this.chat=_element.message;
+      this.selectedUser=user;
+      if(_element.message.split(",")!="")
       {
-        this.usersList.push(res["data"][id]["name"]);
+        this.messageList=_element.message.split(",");
       }
-    }).catch(function (err:any) {
     });
   }
 
   ngOnInit(): void {
-   // this.userService.checkCouchDbDocExist('vidhi');
+    this.userService.checkCouchDbDocExist('users_list');
+  }
+
+  sendMessage()
+  {
+    if(this.message!="" && this.message!=null)
+    {
+      if(this.messageList.length>0)
+      {
+        this.chat=this.chat+","+this.message;
+      }
+      else
+      {
+        this.chat=this.message;
+      }
+      this.userService.updateChat(this.selectedUser,this.chat);
+      this.messageList=this.chat.split(",");
+      this.message="";
+    }
   }
 
 }
