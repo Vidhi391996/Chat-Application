@@ -15,6 +15,8 @@ export class ProfileComponent implements OnInit {
   name: string = "";
   age: string = "";
   address: string = "";
+  profileImageUrl: string = "";
+  hideLoader: boolean = true;
   profileDetailsError: boolean = false;
 
   constructor(private userService: UserService) { }
@@ -25,14 +27,17 @@ export class ProfileComponent implements OnInit {
   //hide show profile popup
   hideShowProfileDetails(display: any) {
     this.display = display;
-    this.updateDetails=false;
+    this.updateDetails = false;
     if (display == true) {
+      this.hideLoader = false;
       this.userService.checkCouchDbDocumentExist("profile");
       this.userService.profileEmitter.subscribe((_element: any) => {
         this.profileDetails = _element;
         this.name = this.profileDetails.name;
         this.age = this.profileDetails.age;
+        this.profileImageUrl = this.profileDetails.profile_image_url;
         this.address = this.profileDetails.address;
+        this.hideLoader = true;
       })
     }
   }

@@ -4,8 +4,8 @@
     flex-direction: row;
 }
 
-.minHeight669 {
-    min-height: 669px;
+.minHeight654 {
+    min-height: 654px;
 }
 
 .purpleBorder {
@@ -76,4 +76,12 @@
 
 .backgroundWhite {
     background-color: #fff;
+}
+
+.loader {
+    position: relative;
+    font-size: 30px!important;
+    left: 650px;
+    bottom: 381px;
+    overflow: hidden;
 }

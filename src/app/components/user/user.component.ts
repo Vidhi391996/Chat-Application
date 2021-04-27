@@ -18,9 +18,9 @@ export class UserComponent implements OnInit {
   messageList: any = [];
   selectedUser: string = '';
   showEmojiCheck: boolean = false;
+  hideLoader: boolean = true;
 
   constructor(private userService: UserService) {
-    this.userService.fetchDataOfUserListOnChange();
     this.userService.usersListEmitter.subscribe((_element: any) => {
       this.usersList = [];
       for (let id in _element["data"]) {
@@ -30,25 +30,29 @@ export class UserComponent implements OnInit {
   }
 
   fetchUserChat(user: any) {
+    this.hideLoader = false;
     this.userService.checkCouchDbDocumentExist(user);
     this.showSendMessage = true;
     this.userService.chatEmitter.subscribe((_element: any) => {
       this.messageList = [];
       this.selectedUser = user;
       this.messageList = _element.message;
+      this.hideLoader = true;
     });
   }
 
   ngOnInit(): void {
-    this.userService.checkCouchDbDocumentExist('users_list');
+    this.userService.fetchDataOfUserListOnChange();
   }
 
   //send message to user and save in couchdb
   sendMessage() {
     if (this.message != "" && this.message != null) {
+      this.hideLoader = false;
       this.messageList[this.messageList.length] = this.message;
       this.userService.updateChat(this.selectedUser, this.messageList);
       this.message = "";
+      this.hideLoader = true;
     }
   }
 

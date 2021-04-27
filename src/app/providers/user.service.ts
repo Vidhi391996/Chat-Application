@@ -23,16 +23,23 @@ export class UserService {
     let database = new PouchDB(url);
     return database;
   }
+
+  //update documnt
+  updateDocument(document: any) {
+    let database = this.establishCouchDBConnection();
+    database.put(document).then((res: any) => {
+      console.log("Document inserted OK");
+    }).catch((err: any) => {
+      console.error(err);
+    });
+  }
+
   //update user chat in couchdb
   updateChat(documentName: any, chat: string) {
     let database = this.establishCouchDBConnection();
     database.get(documentName).then((document: any) => {
       document.message = chat;
-      database.put(document).then((res: any) => {
-        console.log("Document inserted OK");
-      }).catch((err: any) => {
-        console.error(err);
-      });
+      this.updateDocument(document);
     });
   }
 
@@ -43,11 +50,7 @@ export class UserService {
       document.name = profileDetails.name;
       document.age = profileDetails.age;
       document.address = profileDetails.address;
-      database.put(document).then((res: any) => {
-        console.log("Document updateds");
-      }).catch((err: any) => {
-        console.error(err);
-      });
+      this.updateDocument(document);
     });
   }
 

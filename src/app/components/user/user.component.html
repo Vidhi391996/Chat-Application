@@ -1,4 +1,4 @@
-<div fxLayout="row" class="flex-container minHeight669">
+<div fxLayout="row" class="flex-container minHeight654">
     <div fxFlex="20" class="purpleBackground wordBreak">
         <div>
             <i class="fa fa-user-circle-o cursorPointer" aria-hidden="true" (click)="showProfile()"></i>
@@ -25,5 +25,13 @@
     </div>
 </div>
 <div *ngIf="showEmojiCheck===true">
-    <app-emoji></app-emoji>
+    <div fxLayout="row" class="flex-container emojiList">
+        <div fxFlex="10" *ngFor="let emoji of emojisList;let count=index" class="cursorPointer" (click)="selectEmoji(count)">
+            {{emoji}}
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!hideLoader">
+    <app-loader></app-loader>
 </div>

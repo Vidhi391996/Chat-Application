@@ -11,18 +11,18 @@ import { ProfileComponent } from './components/profile/profile.component';
 import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 import {MenuItem} from 'primeng/api';
 import {DropdownModule} from 'primeng/dropdown';
-import { EmojiComponent } from './components/emoji/emoji.component';
 import * as _ from 'lodash';
 import {DialogModule} from 'primeng/dialog';
 import {HttpClientModule} from 
     '@angular/common/http';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     ProfileComponent,
-    EmojiComponent
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

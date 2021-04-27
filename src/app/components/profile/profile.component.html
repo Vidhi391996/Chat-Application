@@ -7,7 +7,7 @@
     </ng-template>
     <div fxLayout="row" class="flex-container">
         <div fxFlex="30">
-            <img src="../../../assets/users.jpg" alt="" width="100" height="100" class="borderRadius55">
+            <img src='{{profileImageUrl}}' alt="" width="100" height="100" class="borderRadius55">
         </div>
         <div fxFlex="70" *ngIf="updateDetails===false" class="wordBreak">
             <div><b>Name:</b> {{profileDetails.name}}</div>
@@ -23,3 +23,7 @@
         </div>
     </div>
 </p-dialog>
+
+<div *ngIf="!hideLoader">
+    <app-loader></app-loader>
+</div>
