@@ -1,17 +1,17 @@
 <div fxLayout="row" class="flex-container minHeight669">
-    <div fxFlex="20" class="orangeBackground wordBreak">
+    <div fxFlex="20" class="purpleBackground wordBreak">
         <div>
             <i class="fa fa-user-circle-o cursorPointer" aria-hidden="true" (click)="showProfile()"></i>
         </div>
-        <div *ngFor="let user of usersList" class="orangeBorder cursorPointer" (click)="fetchUserChat(user)" [ngClass]="selectedUser===user? 'antiquewhiteBackgrountColor' : ''">
+        <div *ngFor="let user of usersList" class="purpleBorder cursorPointer" (click)="fetchUserChat(user)" [ngClass]="selectedUser===user? 'lightPurpleBackgrountColor' : ''">
             {{user}}
         </div>
     </div>
-    <div fxFlex="80" style="background-color: #0080000d" class="wordBreak" *ngIf="!showSendMessage">
-        <div class="selectUserMessage" style="color: green;"><i class="fa fa-user-o" aria-hidden="true"></i></div>
-        <div style="text-align: center;color: green;">Please select user.</div>
+    <div fxFlex="80" class="wordBreak backgroundWhite" *ngIf="!showSendMessage">
+        <div class="selectUserMessage messageColor fontWeightBold"><i class="fa fa-user-o" aria-hidden="true"></i></div>
+        <div class="textAlignCenter messageColor fontWeightBold">Please select user.</div>
     </div>
-    <div fxFlex="80" style="background-color: #0080000d" class="wordBreak" *ngIf="showSendMessage">
+    <div fxFlex="80" class="wordBreak backgroundWhite" *ngIf="showSendMessage">
         <div *ngFor="let messageOfUser of messageList" class="messageRow">
             {{messageOfUser}}
         </div>
@@ -25,9 +25,5 @@
     </div>
 </div>
 <div *ngIf="showEmojiCheck===true">
-    <div fxLayout="row" class="flex-container emojiList">
-        <div fxFlex="10" *ngFor="let emoji of emojisList;let count=index" class="cursorPointer" (click)="selectEmoji(count)">
-            {{emoji}}
-        </div>
-    </div>
+    <app-emoji></app-emoji>
 </div>

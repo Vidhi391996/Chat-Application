@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit {
   //hide show profile popup
   hideShowProfileDetails(display: any) {
     this.display = display;
+    this.updateDetails=false;
     if (display == true) {
       this.userService.checkCouchDbDocumentExist("profile");
       this.userService.profileEmitter.subscribe((_element: any) => {

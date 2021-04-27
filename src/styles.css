@@ -8,12 +8,12 @@
     min-height: 669px;
 }
 
-.orangeBorder {
-    border: 1px solid #ffa5004f;
+.purpleBorder {
+    border: 1px solid #ff00bc2b;
 }
 
-.orangeBackground {
-    background-color: #ffa50026;
+.purpleBackground {
+    background-color: #8000801f;
 }
 
 .fontSize22 {
@@ -32,8 +32,8 @@
     cursor: pointer;
 }
 
-.antiquewhiteBackgrountColor {
-    background-color: antiquewhite;
+.lightPurpleBackgrountColor {
+    background-color: #66008033;
 }
 
 .profileModalCss {
@@ -62,11 +62,18 @@
     border-radius: 55px;
 }
 
-.emojiList {
-    width: 35%;
-    overflow: scroll;
-    height: 150px;
-    position: relative;
-    left: 235px;
-    bottom: 193px;
+.textAlignCenter {
+    text-align: center;
+}
+
+.messageColor {
+    color: #800080ad;
+}
+
+.fontWeightBold {
+    font-weight: bold;
+}
+
+.backgroundWhite {
+    background-color: #fff;
 }

@@ -1,0 +1,8 @@
+.emojiList {
+    width: 35%;
+    overflow: scroll;
+    height: 150px;
+    position: relative;
+    left: 300px;
+    bottom: 240px;
+}
