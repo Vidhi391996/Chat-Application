@@ -17,7 +17,7 @@ export class UserComponent implements OnInit {
   message: string = "";
   messageList: any = [];
   selectedUser: string = '';
-  showIconsCheck: boolean = false;
+  showEmojiCheck: boolean = false;
 
   constructor(private userService: UserService) {
     this.userService.fetchDataOfUserListOnChange();
@@ -30,7 +30,7 @@ export class UserComponent implements OnInit {
   }
 
   fetchUserChat(user: any) {
-    this.userService.checkCouchDbDocExist(user);
+    this.userService.checkCouchDbDocumentExist(user);
     this.showSendMessage = true;
     this.userService.chatEmitter.subscribe((_element: any) => {
       this.messageList = [];
@@ -40,7 +40,7 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.checkCouchDbDocExist('users_list');
+    this.userService.checkCouchDbDocumentExist('users_list');
   }
 
   //send message to user and save in couchdb
@@ -54,7 +54,7 @@ export class UserComponent implements OnInit {
 
   //show emojis to send
   showIcons() {
-    this.showIconsCheck = !this.showIconsCheck;
+    this.showEmojiCheck = !this.showEmojiCheck;
   }
 
   //attach emoji with message

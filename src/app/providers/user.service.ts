@@ -20,15 +20,15 @@ export class UserService {
   establishCouchDBConnection() {
     let PouchDB = require('pouchdb').default;
     let url = CouchDbConfig.couchDbUrl + CouchDbConfig.system;
-    let db = new PouchDB(url);
-    return db;
+    let database = new PouchDB(url);
+    return database;
   }
   //update user chat in couchdb
   updateChat(documentName: any, chat: string) {
-    let db = this.establishCouchDBConnection();
-    db.get(documentName).then((doc: any) => {
-      doc.message = chat;
-      db.put(doc).then((res: any) => {
+    let database = this.establishCouchDBConnection();
+    database.get(documentName).then((document: any) => {
+      document.message = chat;
+      database.put(document).then((res: any) => {
         console.log("Document inserted OK");
       }).catch((err: any) => {
         console.error(err);
@@ -38,13 +38,13 @@ export class UserService {
 
   //update user profile details in couchdb
   updateProfileDetails(profileDetails: any) {
-    let db = this.establishCouchDBConnection();
-    db.get('profile').then((doc: any) => {
-      doc.name = profileDetails.name;
-      doc.age = profileDetails.age;
-      doc.address = profileDetails.address;
-      db.put(doc).then((res: any) => {
-        console.log("Document inserted OK");
+    let database = this.establishCouchDBConnection();
+    database.get('profile').then((document: any) => {
+      document.name = profileDetails.name;
+      document.age = profileDetails.age;
+      document.address = profileDetails.address;
+      database.put(document).then((res: any) => {
+        console.log("Document updateds");
       }).catch((err: any) => {
         console.error(err);
       });
@@ -52,26 +52,26 @@ export class UserService {
   }
 
   //check couch db document exisst if not than create
-  checkCouchDbDocExist(documentName: any) {
-    let db = this.establishCouchDBConnection();
-    db.get(documentName).then((doc: any) => {
-      if (doc.type == documentName) {
+  checkCouchDbDocumentExist(documentName: any) {
+    let database = this.establishCouchDBConnection();
+    database.get(documentName).then((document: any) => {
+      if (document.type == documentName) {
         if (documentName != 'profile') {
-          this.chatEmitter.next(doc);
+          this.chatEmitter.next(document);
         }
         else {
-          this.profileEmitter.next(doc);
+          this.profileEmitter.next(document);
         }
       }
     }).then(function (response: any) {
     }).catch(function (err: any) {
-      let doc = {
+      let document = {
         _id: documentName,
         message: [],
         type: documentName,
       };
-      db.put(doc).then((res: any) => {
-        console.log("Document inserted OK");
+      database.put(document).then((res: any) => {
+        console.log("Success");
       }).catch((err: any) => {
         console.error(err);
       });
@@ -80,13 +80,13 @@ export class UserService {
 
   //fetch live data of users list
   fetchDataOfUserListOnChange() {
-    let db = this.establishCouchDBConnection();
+    let database = this.establishCouchDBConnection();
     let opts = {
       include_docs: true,
       live: true,
     };
-    db.changes(opts).on('change', (change: any) => {
-      db.allDocs({ include_docs: true }).then((res: any) => {
+    database.changes(opts).on('change', (change: any) => {
+      database.allDocs({ include_docs: true }).then((res: any) => {
         let found_elem = _.findKey(res.rows, function (item) { return item.doc.type == "users_list"; });
         if (found_elem != undefined) this.usersListEmitter.next(res.rows[parseInt(found_elem)].doc);
       })

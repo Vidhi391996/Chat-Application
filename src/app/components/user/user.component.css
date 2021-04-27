@@ -29,3 +29,9 @@
     left: 5px;
     top: 6px;
 }
+
+.selectUserMessage {
+    text-align: center;
+    padding-top: 215px;
+    font-size: 50px;
+}

@@ -4,6 +4,10 @@
     flex-direction: row;
 }
 
+.minHeight669 {
+    min-height: 669px;
+}
+
 .orangeBorder {
     border: 1px solid #ffa5004f;
 }
@@ -44,4 +48,25 @@
     color: red;
     font-size: 15px;
     padding-bottom: 10px;
+}
+
+.width3Percentage {
+    width: 3%;
+}
+
+.width85Percentage {
+    width: 85%;
+}
+
+.borderRadius55 {
+    border-radius: 55px;
+}
+
+.emojiList {
+    width: 35%;
+    overflow: scroll;
+    height: 150px;
+    position: relative;
+    left: 235px;
+    bottom: 193px;
 }

@@ -11,13 +11,10 @@ export class ProfileComponent implements OnInit {
   display: boolean = false;
   profileDetails: any = {};
   profileModalCssClass: string = "profileModalCss";
-  file: File | undefined;
-  shortLink: string = "";
   updateDetails: boolean = false;
   name: string = "";
   age: string = "";
   address: string = "";
-  profileImageUrl: string = "";
   profileDetailsError: boolean = false;
 
   constructor(private userService: UserService) { }
@@ -29,18 +26,18 @@ export class ProfileComponent implements OnInit {
   hideShowProfileDetails(display: any) {
     this.display = display;
     if (display == true) {
-      this.userService.checkCouchDbDocExist("profile");
+      this.userService.checkCouchDbDocumentExist("profile");
       this.userService.profileEmitter.subscribe((_element: any) => {
         this.profileDetails = _element;
+        this.name = this.profileDetails.name;
+        this.age = this.profileDetails.age;
+        this.address = this.profileDetails.address;
       })
     }
   }
 
   editProfileDetails() {
     this.updateDetails = true;
-    this.name = this.profileDetails.name;
-    this.age = this.profileDetails.age;
-    this.address = this.profileDetails.address;
   }
 
   saveProfileDetails() {
