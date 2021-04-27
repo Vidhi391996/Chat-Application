@@ -1,48 +1,47 @@
-
 .flex-container {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-  }
+}
 
-  .orangeBorder{
+.orangeBorder {
     border: 1px solid #ffa5004f;
-  }
+}
 
-  .orangeBackground{
+.orangeBackground {
     background-color: #ffa50026;
-  }
+}
 
-  .fontSize22{
+.fontSize22 {
     font-size: 22px!important;
-  }
+}
 
-  .colorWhite{
+.colorWhite {
     color: #fff;
-  }
+}
 
-  .wordBreak{
+.wordBreak {
     word-break: break-all;
-  }
+}
 
-  .cursorPointer{
+.cursorPointer {
     cursor: pointer;
-  }
+}
 
-  .antiquewhiteBackgrountColor{
+.antiquewhiteBackgrountColor {
     background-color: antiquewhite;
-  }
+}
 
-  .profileModalCss{
+.profileModalCss {
     width: 500px;
 }
 
-.marginBottom10{
-  margin-bottom: 10px;
+.marginBottom10 {
+    margin-bottom: 10px;
 }
 
-.error{
-  color: red;
-  font-size: 15px;
+.error {
+    color: red;
+    font-size: 15px;
     padding-bottom: 10px;
 }
