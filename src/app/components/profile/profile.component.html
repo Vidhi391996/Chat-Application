@@ -1,1 +1,25 @@
-<p>profile works!</p>
+<app-user (profile)="hideShowProfileDetails($event)"></app-user>
+
+<p-dialog [(visible)]="display" [modal]=true [resizable]=true  [styleClass]="profileModalCssClass">
+     <ng-template pTemplate="header">
+        <b>Profile Details</b> <i class="fa fa-pencil-square-o cursorPointer"  aria-hidden="true" *ngIf="updateDetails===false" (click)="editProfileDetails()"></i>
+        <i class="fa fa-check-square-o cursorPointer" aria-hidden="true" *ngIf="updateDetails===true" (click)="saveProfileDetails()"></i>
+    </ng-template> 
+    <div fxLayout="row" class="flex-container">
+        <div fxFlex="30">
+            <img src="../../../assets/users.jpg" alt="" width="100" height="100" style="border-radius: 55px;">
+        </div>
+        <div fxFlex="70" *ngIf="updateDetails===false" class="wordBreak">
+            <div><b>Name:</b> {{profileDetails.name}}</div>
+            <div ><b>Age:</b> {{profileDetails.age}}</div>
+            <div ><b>Address:</b> {{profileDetails.address}}</div>
+        </div>
+        <div fxFlex="70" *ngIf="updateDetails===true" >
+            <div class="error" *ngIf="profileDetailsError">Please fill all the details.</div>
+            <div class="marginBottom10"><b>Name:</b>&nbsp;   <input type="text" [(ngModel)]="name" class="form-el-space"/></div>
+            <div class="marginBottom10"><b>Age:</b> &nbsp;  <input type="text" [(ngModel)]="age" class="form-el-space" /></div>
+            <div class="marginBottom10"><b>Address:</b>  &nbsp; <input type="text" [(ngModel)]="address" class="form-el-space"/></div>
+        </div>
+    </div>
+</p-dialog>
+

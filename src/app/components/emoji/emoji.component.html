@@ -1,5 +1,8 @@
-<div fxLayout="row" class="flex-container">
-    <div fxFlex="10" *ngFor="let emoji of emojisList;let count=index" (click)="selectEmoji(count)">
+<div fxLayout="row" class="flex-container" style="    width: 35%;
+overflow: scroll;
+height: 150px;    position: relative;
+    left: 235px;    bottom: 193px;">
+    <div fxFlex="10" *ngFor="let emoji of emojisList;let count=index" class="cursorPointer" (click)="selectEmoji(count)">
         {{emoji}}
     </div>
 </div>

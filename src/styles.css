@@ -28,3 +28,21 @@
   .cursorPointer{
     cursor: pointer;
   }
+
+  .antiquewhiteBackgrountColor{
+    background-color: antiquewhite;
+  }
+
+  .profileModalCss{
+    width: 500px;
+}
+
+.marginBottom10{
+  margin-bottom: 10px;
+}
+
+.error{
+  color: red;
+  font-size: 15px;
+    padding-bottom: 10px;
+}

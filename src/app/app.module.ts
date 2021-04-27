@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,9 @@ import {MenuItem} from 'primeng/api';
 import {DropdownModule} from 'primeng/dropdown';
 import { EmojiComponent } from './components/emoji/emoji.component';
 import * as _ from 'lodash';
+import {DialogModule} from 'primeng/dialog';
+import {HttpClientModule} from 
+    '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,12 +30,18 @@ import * as _ from 'lodash';
     FlexLayoutModule,
     FormsModule,
     AccordionModule,
-    DropdownModule
+    DropdownModule,
+    DialogModule,
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   exports:[
     FlexLayoutModule,
     AccordionModule,
-    FormsModule
+    FormsModule,
+    DialogModule,
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

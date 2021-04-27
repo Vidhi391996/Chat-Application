@@ -1,20 +1,41 @@
-<div fxLayout="row" class="flex-container" style="min-height: 500px;">
-    <div fxFlex="20" class="orangeBackground wordBreak cursorPointer">
-        <div *ngFor="let user of usersList" class="orangeBorder"  (click)="fetchUserChat(user)">  
+<div fxLayout="row" class="flex-container" style="min-height: 669px;">
+    <div fxFlex="20" class="orangeBackground wordBreak ">
+        <div>
+            <i class="fa fa-user-circle-o cursorPointer" aria-hidden="true" (click)="showProfile()"></i>
+        </div>
+        <div *ngFor="let user of usersList" class="orangeBorder cursorPointer"  (click)="fetchUserChat(user)" [ngClass]="selectedUser===user? 'antiquewhiteBackgrountColor' : ''">  
             {{user}}
         </div>
     </div>
-    <div fxFlex="80" style="background-color: #0080000d" class="wordBreak">
+    <div fxFlex="80" style="background-color: #0080000d" class="wordBreak" *ngIf="!showSendMessage"> 
+        <div style="text-align: center;padding-top: 215px;font-size: 50px;
+        color: green;"><i class="fa fa-user-o" aria-hidden="true"></i></div>
+        <div style="text-align: center;color: green;">Please select user.</div>
+    </div>
+    <div fxFlex="80" style="background-color: #0080000d" class="wordBreak" *ngIf="showSendMessage"> 
         <div *ngFor="let messageOfUser of messageList" class="messageRow">
             {{messageOfUser}}
         </div>
         <div class="chatTextBox">
-            <input type="text" [(ngModel)]="message" class="form-el-space" style="width: 92%;" (keyup.enter)="sendMessage()"/>
+            <i class="fa fa-smile-o cursorPointer" aria-hidden="true" style="width: 3%;" (click)="showIcons()"></i>
+            <input type="text" [(ngModel)]="message" class="form-el-space" style="width: 85%;" (keyup.enter)="sendMessage()"/>
             <button class="btn btn-primary cursorPointer sendButton" (click)="sendMessage()" >
                 <i class="fa fa-chevron-right fontSize22 colorWhite" aria-hidden="true" ></i>
               </button>
         </div>
     </div>
 </div>
+<div *ngIf="showIconsCheck===true">
+    <div fxLayout="row" class="flex-container" style="    width: 35%;
+overflow: scroll;
+height: 150px;    position: relative;
+    left: 235px;    bottom: 193px;">
+    <div fxFlex="10" *ngFor="let emoji of emojisList;let count=index" class="cursorPointer" (click)="selectEmoji(count)">
+        {{emoji}}
+    </div>
+</div>
 
-<app-emoji></app-emoji>
+<!-- <app-emoji></app-emoji> -->
+
+</div>
+

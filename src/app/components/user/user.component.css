@@ -21,3 +21,9 @@
     position: absolute;width: 83%;
         top: 460px;margin-left: 5px;
 }
+
+.smilyIcon{
+    position: absolute;
+    left: 5px;
+    top: 6px;
+}
