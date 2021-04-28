@@ -2,8 +2,7 @@
 
 <p-dialog [(visible)]="display" [modal]=true [resizable]=true [styleClass]="profileModalCssClass">
     <ng-template pTemplate="header">
-        <b>Profile Details</b> <i class="fa fa-pencil-square-o cursorPointer" aria-hidden="true" *ngIf="updateDetails===false" (click)="editProfileDetails()"></i>
-        <i class="fa fa-check-square-o cursorPointer" aria-hidden="true" *ngIf="updateDetails===true" (click)="saveProfileDetails()"></i>
+        <b>Profile Details</b>
     </ng-template>
     <div fxLayout="row" class="flex-container">
         <div fxFlex="30">
@@ -22,6 +21,14 @@
             <div class="marginBottom10"><b>Address:</b> &nbsp; <input type="text" [(ngModel)]="address" class="form-el-space" /></div>
         </div>
     </div>
+    <p-footer>
+        <button class="btn cursorPointer sendButton editSaveButton" (click)="editProfileDetails()" *ngIf="updateDetails===false">
+            <i class="fa fa-pencil-square-o cursorPointer" aria-hidden="true"  ></i>Edit
+        </button>
+        <button class="btn cursorPointer sendButton editSaveButton" (click)="saveProfileDetails()" *ngIf="updateDetails===true">
+            <i class="fa fa-check-square-o cursorPointer" aria-hidden="true"></i>Save
+        </button>
+    </p-footer>
 </p-dialog>
 
 <div *ngIf="!hideLoader">

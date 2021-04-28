@@ -32,12 +32,12 @@ export class UserComponent implements OnInit {
   fetchUserChat(user: any) {
     this.hideLoader = false;
     this.userService.checkCouchDbDocumentExist(user);
+    this.hideLoader = true;
     this.showSendMessage = true;
+    this.selectedUser = user;
     this.userService.chatEmitter.subscribe((_element: any) => {
       this.messageList = [];
-      this.selectedUser = user;
       this.messageList = _element.message;
-      this.hideLoader = true;
     });
   }
 
@@ -49,6 +49,8 @@ export class UserComponent implements OnInit {
   sendMessage() {
     if (this.message != "" && this.message != null) {
       this.hideLoader = false;
+      this.showEmojiCheck=false;
+      this.showEmojiCheck=false;
       this.messageList[this.messageList.length] = this.message;
       this.userService.updateChat(this.selectedUser, this.messageList);
       this.message = "";
