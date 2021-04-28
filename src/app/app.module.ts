@@ -16,13 +16,15 @@ import {DialogModule} from 'primeng/dialog';
 import {HttpClientModule} from 
     '@angular/common/http';
 import { LoaderComponent } from './components/loader/loader.component';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     ProfileComponent,
-    LoaderComponent
+    LoaderComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

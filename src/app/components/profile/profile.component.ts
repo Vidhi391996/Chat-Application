@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit {
   profileImageUrl: string = "";
   hideLoader: boolean = true;
   profileDetailsError: boolean = false;
+  showAlert:boolean=false;
 
   constructor(private userService: UserService) { }
 
@@ -53,6 +54,10 @@ export class ProfileComponent implements OnInit {
       this.profileDetails.address = this.address;
       this.userService.updateProfileDetails(this.profileDetails);
       this.updateDetails = false;
+      this.showAlert=true;
+      setTimeout(() => {
+        this.showAlert=false;
+      }, 5000);
     }
     else {
       this.profileDetailsError = true;
