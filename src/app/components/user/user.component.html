@@ -1,38 +1,36 @@
-<div class="margin0 padding0">
-    <div fxLayout="row" class="flex-container ">
-        <div fxFlex="20" class="purpleBackground wordBreak">
-            <div>
-                <i class="fa fa-user-circle-o cursorPointer" aria-hidden="true" (click)="showProfile()"></i>
-            </div>
-            <div *ngFor="let user of usersList" class="purpleBorder cursorPointer" (click)="fetchUserChat(user)" [ngClass]="selectedUser===user? 'lightPurpleBackgrountColor' : ''">
-                {{user}}
-            </div>
+<div fxLayout="row" class="flex-container minHeight654">
+    <div fxFlex="20" class="purpleBackground wordBreak">
+        <div>
+            <i class="fa fa-user-circle-o cursorPointer" aria-hidden="true" (click)="showProfile()"></i>
         </div>
-        <div fxFlex="80" class="wordBreak backgroundWhite" *ngIf="!showSendMessage">
-            <div class="selectUserMessage messageColor fontWeightBold"><i class="fa fa-user-o" aria-hidden="true"></i>
-            </div>
-            <div class="textAlignCenter messageColor fontWeightBold">Please select user.</div>
-        </div>
-        <div fxFlex="80" class="wordBreak backgroundWhite" *ngIf="showSendMessage">
-            <div class="messageList">
-                <div *ngFor="let messageOfUser of messageList" class="messageRow">
-                    {{messageOfUser}}
-                </div>
-            </div>
-            <div class="chatTextBox">
-                <i class="fa fa-smile-o cursorPointer width3Percentage" aria-hidden="true" (click)="showIcons()"></i>
-                <input type="text" [(ngModel)]="message" class="form-el-space width85Percentage" (keyup.enter)="sendMessage()" />
-                <button class="btn btn-primary cursorPointer sendButton" (click)="sendMessage()">
-                    <i class="fa fa-chevron-right fontSize22 colorWhite" aria-hidden="true"></i>
-                </button>
-            </div>
+        <div *ngFor="let user of usersList" class="purpleBorder cursorPointer" (click)="fetchUserChat(user)" [ngClass]="selectedUser===user? 'lightPurpleBackgrountColor' : ''">
+            {{user}}
         </div>
     </div>
-    <div *ngIf="showEmojiCheck===true">
-        <div fxLayout="row" class="flex-container emojiList">
-            <div fxFlex="10" *ngFor="let emoji of emojisList;let count=index" class="cursorPointer" (click)="selectEmoji(count)">
-                {{emoji}}
+    <div fxFlex="80" class="wordBreak backgroundWhite" *ngIf="!showSendMessage">
+        <div class="selectUserMessage messageColor fontWeightBold"><i class="fa fa-user-o" aria-hidden="true"></i>
+        </div>
+        <div class="textAlignCenter messageColor fontWeightBold">Please select user.</div>
+    </div>
+    <div fxFlex="80" class="wordBreak backgroundWhite" *ngIf="showSendMessage">
+        <div class="messageList">
+            <div *ngFor="let messageOfUser of messageList" class="messageRow">
+                {{messageOfUser}}
             </div>
+        </div>
+        <div class="chatTextBox">
+            <i class="fa fa-smile-o cursorPointer width3Percentage" aria-hidden="true" (click)="showIcons()"></i>
+            <input type="text" [(ngModel)]="message" class="form-el-space width85Percentage" (keyup.enter)="sendMessage()" />
+            <button class="btn btn-primary cursorPointer sendButton" (click)="sendMessage()">
+                    <i class="fa fa-chevron-right fontSize22 colorWhite" aria-hidden="true"></i>
+                </button>
+        </div>
+    </div>
+</div>
+<div *ngIf="showEmojiCheck===true">
+    <div fxLayout="row" class="flex-container emojiList">
+        <div fxFlex="10" *ngFor="let emoji of emojisList;let count=index" class="cursorPointer" (click)="selectEmoji(count)">
+            {{emoji}}
         </div>
     </div>
 </div>

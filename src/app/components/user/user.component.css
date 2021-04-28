@@ -22,7 +22,7 @@
 .chatTextBox {
     position: absolute;
     width: 79%;
-    top: 532px;
+    top: 598px;
     margin-left: 5px;
 }
 
@@ -43,7 +43,7 @@
     overflow: scroll;
     height: 150px;
     position: relative;
-    left: 295px;
+    left: 390px;
     bottom: 227px;
 }
 
