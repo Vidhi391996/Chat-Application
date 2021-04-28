@@ -40,7 +40,6 @@ import { AlertComponent } from './alert/alert.component';
   exports:[
     FlexLayoutModule,
     AccordionModule,
-    FormsModule,
     DialogModule,
     BrowserAnimationsModule,
     HttpClientModule
