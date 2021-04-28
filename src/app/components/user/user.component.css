@@ -4,7 +4,7 @@
     background-color: #800080d9;
     border: 0px;
     position: relative;
-    left: 3px;
+    left: 8px;
 }
 
 .messageRow {
@@ -21,8 +21,8 @@
 
 .chatTextBox {
     position: absolute;
-    width: 83%;
-    top: 580px;
+    width: 79%;
+    top: 532px;
     margin-left: 5px;
 }
 
@@ -45,4 +45,9 @@
     position: relative;
     left: 295px;
     bottom: 227px;
+}
+
+.messageList {
+    height: 565px;
+    overflow: auto;
 }
